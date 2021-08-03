@@ -8,10 +8,29 @@ This repository contains the open source PHP SDK that allows you to access the F
 
 ## Installation
 
-The Facebook PHP SDK can be installed with [Composer](https://getcomposer.org/). Run this command:
+This fork has to be installed manually inside your `composer.json` file
+not that you manually have to include the autoload path when including a git repository [see: https://stackoverflow.com/questions/18106599/composer-does-not-generate-autoloader-information-autoload-namespaces-php]
 
-```sh
-composer require facebook/graph-sdk
+```json
+"repositories": [
+        {
+            "type": "package",
+            "package": {
+            "name": "madebymode/facebook-php-graph-sdk",
+            "version": "6.0.2",
+            "source": {
+                "url": "https://github.com/madebymode/facebook-php-graph-sdk.git",
+                "type": "git",
+                "reference": "php8"
+          },
+          "autoload": {
+            "psr-4": {
+                "Facebook\\": "src/Facebook/"
+                }
+                }
+            }
+        }
+    ],
 ```
 
 Please be aware, that there are issues when using the Facebook SDK together with [Guzzle](https://github.com/guzzle/guzzle) 6.x. php-graph-sdk v5.x only works with Guzzle 5.x out of the box. However, [there is a workaround to make it work with Guzzle 6.x](https://www.sammyk.me/how-to-inject-your-own-http-client-in-the-facebook-php-sdk-v5#writing-a-guzzle-6-http-client-implementation-from-scratch).
@@ -27,8 +46,6 @@ Upgrading from v4.x? Facebook PHP SDK v5.x introduced breaking changes. Please [
 Simple GET example of a user's profile.
 
 ```php
-require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
-
 $fb = new \Facebook\Facebook([
   'app_id' => '{app-id}',
   'app_secret' => '{app-secret}',
