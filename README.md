@@ -9,7 +9,8 @@ This repository contains the open source PHP SDK that allows you to access the F
 ## Installation
 
 This fork has to be installed manually inside your `composer.json` file
-not that you manually have to include the autoload path when including a git repository [see: https://stackoverflow.com/questions/18106599/composer-does-not-generate-autoloader-information-autoload-namespaces-php]
+
+note that you manually have to include the autoload path when including a git repository [see: https://stackoverflow.com/questions/18106599/composer-does-not-generate-autoloader-information-autoload-namespaces-php]
 
 ```json
 "repositories": [
